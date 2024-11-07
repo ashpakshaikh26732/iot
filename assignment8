@@ -1,0 +1,28 @@
+// Define the analog pin where the TMP36 sensor is connected
+const int tempPin = A0;
+
+void setup() {
+  // Begin Serial communication at 9600 baud
+  Serial.begin(9600);
+  Serial.println("Reading temperature values:");
+}
+
+void loop() {
+  // Read the analog value from the TMP36
+  int analogValue = analogRead(tempPin);
+
+  // Convert the analog value to a voltage
+  float voltage = analogValue * (5.0 / 1023.0);
+
+  // Convert the voltage to a temperature in Celsius
+  float temperatureC = (voltage - 0.5) * 100.0;
+
+  // Print the temperature to the Serial Monitor
+  Serial.print("Temperature: ");
+  Serial.print(temperatureC);
+  Serial.println(" °C");
+
+  // Wait 1 second before taking another reading
+  delay(1000);
+}
+

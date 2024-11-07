@@ -1,0 +1,37 @@
+// Pin definitions
+const int redLED = 13;
+const int yellowLED = 12;
+const int greenLED = 11;
+
+// Timings for traffic light in milliseconds
+const int greenTime = 5000;    // Green light duration (5 seconds)
+const int yellowTime = 2000;   // Yellow light duration (2 seconds)
+const int redTime = 5000;      // Red light duration (5 seconds)
+
+void setup() {
+  // Set LED pins as output
+  pinMode(redLED, OUTPUT);
+  pinMode(yellowLED, OUTPUT);
+  pinMode(greenLED, OUTPUT);
+}
+
+void loop() {
+  // Green light on, others off
+  digitalWrite(greenLED, HIGH);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(redLED, LOW);
+  delay(greenTime);  // Wait for green time
+
+  // Yellow light on, others off
+  digitalWrite(greenLED, LOW);
+  digitalWrite(yellowLED, HIGH);
+  digitalWrite(redLED, LOW);
+  delay(yellowTime); // Wait for yellow time
+
+  // Red light on, others off
+  digitalWrite(greenLED, LOW);
+  digitalWrite(yellowLED, LOW);
+  digitalWrite(redLED, HIGH);
+  delay(redTime);    // Wait for red time
+}
+

@@ -1,0 +1,54 @@
+// Define the analog pin where the TMP36 sensor is connected
+const int tempPin = A0;
+
+// Variables to store temperature values
+float maxTemp = -999.0;  // Initial maximum temperature
+float minTemp = 999.0;   // Initial minimum temperature
+
+void setup() {
+  // Begin Serial communication at 9600 baud
+  Serial.begin(9600);
+  Serial.println("Temperature readings:");
+}
+
+void loop() {
+  // Read the analog value from the TMP36 sensor
+  int analogValue = analogRead(tempPin);
+
+  // Convert the analog value to a voltage
+  float voltage = analogValue * (5.0 / 1023.0);
+
+  // Convert the voltage to temperature in Celsius
+  float temperatureC = (voltage - 0.5) * 100.0;
+
+  // Convert the Celsius temperature to Fahrenheit
+  float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+
+  // Update the maximum and minimum temperatures
+  if (temperatureC > maxTemp) {
+    maxTemp = temperatureC;
+  }
+  if (temperatureC < minTemp) {
+    minTemp = temperatureC;
+  }
+
+  // Print the temperature in Celsius and Fahrenheit
+  Serial.print("Current Temperature: ");
+  Serial.print(temperatureC);
+  Serial.print(" °C, ");
+  Serial.print(temperatureF);
+  Serial.println(" °F");
+
+  // Print the maximum and minimum temperatures
+  Serial.print("Max Temperature: ");
+  Serial.print(maxTemp);
+  Serial.println(" °C");
+
+  Serial.print("Min Temperature: ");
+  Serial.print(minTemp);
+  Serial.println(" °C");
+
+  // Wait 1 second before taking the next reading
+  delay(1000);
+}
+

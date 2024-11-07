@@ -1,0 +1,39 @@
+// Define LED pins
+const int ledPin1 = 2;  // LED 1 connected to pin 2
+const int ledPin2 = 3;  // LED 2 connected to pin 3
+const int ledPin3 = 4;  // LED 3 connected to pin 4
+
+void setup() {
+  // Set all LED pins as outputs
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(ledPin3, OUTPUT);
+}
+
+void loop() {
+  // Turn LEDs ON
+  digitalWrite(ledPin1, HIGH);
+  digitalWrite(ledPin2, HIGH);
+  digitalWrite(ledPin3, HIGH);
+  delay(1000);  // Wait for 1 second
+
+  // Turn LEDs OFF
+  digitalWrite(ledPin1, LOW);
+  digitalWrite(ledPin2, LOW);
+  digitalWrite(ledPin3, LOW);
+  delay(1000);  // Wait for 1 second
+
+  // Blink LEDs in a sequence
+  digitalWrite(ledPin1, HIGH);
+  delay(500);
+  digitalWrite(ledPin1, LOW);
+
+  digitalWrite(ledPin2, HIGH);
+  delay(500);
+  digitalWrite(ledPin2, LOW);
+
+  digitalWrite(ledPin3, HIGH);
+  delay(500);
+  digitalWrite(ledPin3, LOW);
+}
+

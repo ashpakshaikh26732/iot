@@ -1,0 +1,30 @@
+void setup() {
+  // Begin Serial communication at 9600 baud
+  Serial.begin(9600);
+  // Prompt the user to enter a number
+  Serial.println("Please enter a number to square:");
+}
+
+void loop() {
+  // Check if data is available to read from Serial Monitor
+  if (Serial.available() > 0) {
+    // Read the input as a string from the Serial Monitor
+    String input = Serial.readStringUntil('\n');
+    
+    // Convert the input string to an integer
+    int number = input.toInt();
+    
+    // Calculate the square of the number
+    int squaredNumber = number * number;
+    
+    // Display the result
+    Serial.print("The square of ");
+    Serial.print(number);
+    Serial.print(" is ");
+    Serial.println(squaredNumber);
+    
+    // Prompt for another number
+    Serial.println("Enter another number to square:");
+  }
+}
+
